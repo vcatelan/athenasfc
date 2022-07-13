@@ -273,6 +273,56 @@ img {
     padding: 20px 5px;
 }
 
+.patrocinios {
+	border-bottom: 2px solid #ae841a;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 60px 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.patrocinios-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:flex-end;
+}
+
+.patrocinios-item {
+	/* border-bottom: 8px solid #004aad; */
+	flex: 1 1 175px;
+	margin: 10px;
+}
+.patrocinios-item :hover {
+	border-bottom: 8px solid #ae841a;
+
+}
+
+.patrocinios-info {
+	flex: 2 1 300px;
+	margin: 0 10px;
+}
+
+.patrocinios-info h1 {
+	font-size: 3em;
+	margin-bottom: .5em;
+}
+
+.patrocinios-info p {
+	font-size: 1.25em;
+	line-height: 1.4;
+	margin-bottom: 1em;
+	color: #7c7c7c;
+}
+
+.patrocinios-item h2 {
+   
+	background: #004aad;
+    font-size: 1.5em;
+    color: #ae841a;
+    padding: 20px 5px;
+}
+
 
 .contato {
 	border-bottom: 2px solid #ae841a;
