@@ -376,8 +376,6 @@ img {
 	}
 }
 
-
-
 .footer {
 	display: flex;
 	background: #004aad;
@@ -389,4 +387,15 @@ img {
 	text-align: center;
 	font-size: 1.25em;
 	color: #ae841a;
+}
+
+.js .js-scroll {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+}
+
+.js .js-scroll.ativo {
+    opacity: 1;
+    transition: .3s;
+    transform: translate3d(0, 0, 0);
 }
