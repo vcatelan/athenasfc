@@ -14,14 +14,17 @@
 	<body>
 		<section class="cabecalho">
 			<div class="faixa"></div>
-			<header class="menu-bg">
+			<header id="header" class="menu-bg">
 				<div class="menu">
 					<div class="menu-logo">
 						<a href="#"><img class="nome" src="img/texto.png" onmouseover="this.src='img/textod.png'" onmouseout="this.src='img/texto.png'" alt="Sobre 1"></a>
 						
 					</div>
-					<nav class="menu-nav js-menu">
-						<ul>
+					<nav id="nav" class="menu-nav js-menu">
+						<button aria-label="Abrir Menu" id ="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expended ="false">Menu
+							<span id="hamburguer"></span>
+						</button>
+						<ul id="menu" role="menu">
 							<!-- <li><a href="#sobre">Sobre</a></li> -->
 							<li><a href="#unidades">Unidades</a></li>
 							<li><a href="#treino">Treino</a></li>
