@@ -1,72 +1,523 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Athenas FC</title>
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/grid.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="icon" href="img/escudo.png">
-	</head>
-	<body>
-		<section class="cabecalho">
-			<div class="faixa"></div>
-			<header id="header" class="menu-bg">
-				<div class="menu">
-					<div class="menu-logo">
-						<a href="#"><img class="nome" src="img/texto.png" onmouseover="this.src='img/textod.png'" onmouseout="this.src='img/texto.png'" alt="Sobre 1"></a>
-						
-					</div>
-					<nav id="nav" class="menu-nav js-menu">
-						<button aria-label="Abrir Menu" id ="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expended ="false">Menu
-							<span id="hamburguer"></span>
-						</button>
-						<ul id="menu" role="menu">
-							<li><a href="#unidades">Unidades</a></li>
-							<li><a href="#treino">Treino</a></li>
-							<li><a href="#parceiros">Parceiros</a></li>							
-							<li><a href="#patrocinios">Patrocinios</a></li>
-							<li><a href="#contato">Contato</a></li>
-						</ul>
-					</nav>
-				</div>
-			</header>
-		</section>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Athenas FC</title>
+	<link rel="icon" href="img/escudo.png">
 
-		<section class="meio">	
-			<section class="sobre js-scroll" id="sobre">
-				<div class="sobre-info">
-					<!-- <h1>Sobre</h1> -->
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
-				<div class="sobre-img">
-					<img src="img/escudo.png" alt="Sobre 1">
-				</div>
-			</section>
-			<iframe width="100%" height="620" id="video" src="https://www.youtube.com/embed/1dUGMARRuQE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<style>
+		body, h1, h2, p, ul, li, a {
+			margin: 0px;
+			padding: 0px;
+		}
+		body {
+			font-family: "Nunito", Helvetica, Arial, sans-serif;
+			color: #222222;
+		}
+		ul {
+			list-style: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+		* {
+			box-sizing: border-box;
+		}
+
+		.faixa {
+			background: #ae841a;
+			max-width: 2000px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			padding-top: 10px;
+			/* margin: 0 10px 10px 10px;
+			color: white; */
+		}
+		.menu-bg {
+			background: #004aad;
+		}
+		.menu {
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 15px 0;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.menu a {
+			color:black;
+		}
+		.menu-nav {
+			transition: 0.3s ease-out;
+		}
+		.menu-nav ul {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.menu-nav a {
+			font-size: 1.25em;
+			display: block;
+			padding: 10px;
+		}
+		.menu-nav a:hover{
+			color: #ae841a;
+		}
+		#btn-mobile {
+			display: none;
+		}
+		@media (max-width: 600px) {
+			#menu {
+			display: block;
+			position: absolute;
+			width: 100%;
+			top: 70px;
+			right: 0px;
+			background: #004aad;
+			transition: 0.6s;
+			z-index: 1000;
+			height: 0px;
+			visibility: hidden;
+			overflow-y: hidden;
+			}
+			#nav.active #menu {
+			height: calc(100vh - 70px);
+			visibility: visible;
+			overflow-y: auto;
+			}
+			#menu a {
+			padding: 1rem 0;
+			margin: 0 1rem;
+			border-bottom: 2px solid #ae841a;
+			}
+
+			#menu a:hover{
+				color: #ae841a;
+			}
+			#btn-mobile {
+			display: flex;
+			padding: 0.5rem 1rem;
+			font-size: 1.5rem;
+			border: none;
+			background: none;
+			cursor: pointer;
+			gap: 0.5rem;
+			}
+			#btn-mobile:hover{
+				color: #ae841a;
+			}
+			#hamburger {
+			border-top: 2px solid;
+			width:20px;
+			height:10px;
+			display:block;
+			background-color: #ae841a;
+			}
+			#hamburger:after,
+			#hamburger:before {
+			content: '';
+			display: block;
+			width: 20px;
+			height: 2px;
+			background: currentColor;
+			margin-top: 5px;
+			transition: 0.3s;
+			position: relative;
+			}
+			#nav.active #hamburger {
+			border-top-color: transparent;
+			}
+			#nav.active #hamburger::before {
+			transform: rotate(135deg);
+			}
+			#nav.active #hamburger::after {
+			transform: rotate(-135deg);
+			top: -7px;
+			}
+		}
+		.nav-link {
+
+		}
+
+		.nome {
+			width: 150px;
+		}
+		.introducao {
+			font-size: 3em;
+			line-height: 1;
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 60px 10px;
+		}
+		.sobre {
+			border-bottom: 2px solid #ae841a;
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 60px 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.sobre-info {
+			flex: 2 1 300px;
+			margin: 0 10px;
+		}
+		.sobre-info h1 {
+			font-size: 3em;
+			margin-bottom: .5em;
+		}
+		.sobre-info p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+		.sobre-img {
+			flex: 1 1 160px;
+			margin: 0 10px;
+		}
+
+
+		.unidades {
+			border-bottom: 2px solid #ae841a;
+			max-width: 960px;
+			margin: 60px auto;
+		}
+		.unidades h1 {
+			font-size: 3em;
+			margin: 0 10px 60px 10px
+		}
+		.unidades-info p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+		.unidades-container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-end;
+		}
+		.unidades-item {
+			flex: 1 1 175px;
+			margin: 10px;
+		}
+		.mapa {
+			flex: 1 1 175px;
+			max-width: 775px;
+		
+		}
+		.unidades-item h2 {
+			font-size: 1.5em;
+			color: #ae841a;
+			background: #004aad;
+			padding: 60px 20px;
+		}
+
+
+		.treino {
+			border-bottom: 2px solid #ae841a;
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 60px 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.treino-info {
+			flex: 2 1 300px;
+			margin: 0 10px;
+		}
+		.treino-info h1 {
+			font-size: 3em;
+			margin-bottom: .5em;
+		}
+		.treino-info p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+		.treino-img {
+			flex: 1 1 160px;
+			/* margin: 0 10px; */
+		
+		}
+		.treino{
+			max-width: 960px;
+			margin: 60px auto;
+		}
+		.treino h1 {
+			font-size: 3em;
+			margin: 0 10px 60px 10px;
 			
-			<section class="unidades js-scroll" id="unidades">
-				<div class="unidades-info">
-					<h1>Unidades</h1>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		}
+		.treino-item h2 {
+			font-size: 1.5em;
+			color: #ae841a;;
+			background: #004aad; 
+			padding: 60px 20px;
+		}
+		.treino p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+		.treino-container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items:flex-end;
+		}
+		.treino-item {
+			flex: 1 1 175px;
+			margin: 10px;
+		}
+
+
+		.parceiros {
+			border-bottom: 2px solid #ae841a;
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 60px 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.parceiros-container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items:flex-end;
+		}
+		.parceiros-item {
+			/* border-bottom: 8px solid #004aad; */
+			flex: 1 1 175px;
+			margin: 10px;
+		}
+		.parceiros-item :hover {
+			border-bottom: 8px solid #ae841a;
+
+		}
+
+		.parceiros-info {
+			flex: 2 1 300px;
+			margin: 0 10px;
+		}
+
+		.parceiros-info h1 {
+			font-size: 3em;
+			margin-bottom: .5em;
+		}
+
+		.parceiros-info p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+
+		.parceiros-item h2 {
+		
+			background: #004aad;
+			font-size: 1.5em;
+			color: #ae841a;
+			padding: 20px 5px;
+		}
+
+
+		.patrocinios {
+			border-bottom: 2px solid #ae841a;
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 60px 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.patrocinios-container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items:flex-end;
+		}
+		.patrocinios-item {
+			/* border-bottom: 8px solid #004aad; */
+			flex: 1 1 175px;
+			margin: 10px;
+		}
+		.patrocinios-item :hover {
+			border-bottom: 8px solid #ae841a;
+
+		}
+		.patrocinios-info {
+			flex: 2 1 300px;
+			margin: 0 10px;
+		}
+		.patrocinios-info h1 {
+			font-size: 3em;
+			margin-bottom: .5em;
+		}
+		.patrocinios-info p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+		.patrocinios-item h2 {
+		
+			background: #004aad;
+			font-size: 1.5em;
+			color: #ae841a;
+			padding: 20px 5px;
+		}
+
+
+		.contato {
+			border-bottom: 2px solid #ae841a;
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 60px 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.contato-info {
+			flex: 2 1 300px;
+			margin: auto;
+		}
+		.contato-info h1 {
+			font-size: 3em;
+			margin-bottom: .5em;
+		}
+		.contato-info p {
+			font-size: 1.25em;
+			line-height: 1.4;
+			margin-bottom: 1em;
+			color: #7c7c7c;
+		}
+		.contato-img {
+			flex: 1 1 160px;
+			margin: 0 10px;
+		}
+		.contato-redes {
+
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+		}
+		.contato-redes > a {
+			margin-right: 15%;
+			margin-left: 15%;
+		}
+		.contato-redes > a > img {
+			width: 110px;
+		} 
+
+
+		.footer {
+			display: flex;
+			background: #004aad;
+			height: 60px;
+			align-items: center;
+		}
+		.footer p {
+			flex: 1;
+			text-align: center;
+			font-size: 1.25em;
+			color: #ae841a;
+		}
+		.js .js-scroll {
+			opacity: 0;
+			transform: translate3d(-30px, 0, 0);
+		}
+		.js .js-scroll.ativo {
+			opacity: 1;
+			transition: .3s;
+			transform: translate3d(0, 0, 0);
+		}
+
+		@media (max-width:767px) {
+			.newsletter-form button {
+				font-size: 1.5em;
+			}
+		}
+		@media (min-width:768px) and (max-width: 992px) {
+			.newsletter-form button {
+				font-size: 1.5em;
+			}
+		}
+		@media (min-width:992px) {
+			.newsletter-form button {
+				font-size: 1.5em;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<section class="cabecalho">
+		<div class="faixa"></div>
+		<header id="header" class="menu-bg">
+			<div class="menu">
+				<div class="menu-logo">
+					<a href="#"><img class="nome" src="img/texto.png" onmouseover="this.src='img/textod.png'" onmouseout="this.src='img/texto.png'" alt="Sobre 1"></a>	
 				</div>
-				<div class="unidades-container">
-					<div class="unidades-item scs">
-						<h2>São Caetano do Sul<br>Terças Feiras - 19h ás 22h</h2>
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.136713282269!2d-46.680740284609655!3d-23.527584766231865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57fd1d715d45%3A0x864e5421d6195cb1!2sAllianz%20Parque!5e0!3m2!1spt-BR!2sbr!4v1653068977617!5m2!1spt-BR!2sbr" width="460" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe alt="unidades">
-					</div>
-					<div class="unidades-item sa">
-						<h2>Santo André<br> Quintas Feiras - 19h ás 22h</h2>
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29248.946646981105!2d-46.75304918437498!3d-23.60008879999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce56c31b1fe649%3A0x7d134f4dfc6618c2!2sEst%C3%A1dio%20C%C3%ADcero%20Pompeu%20de%20Toledo!5e0!3m2!1spt-BR!2sbr!4v1653069702692!5m2!1spt-BR!2sbr" width="460" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe alt="unidades">
-					</div>
+				<nav id="nav" class="menu-nav js-menu">
+					<button aria-label="Abrir Menu" id ="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expended ="false">Menu
+						<span id="hamburguer"></span>
+					</button>
+					<ul id="menu" role="menu">
+						<li><a href="#unidades">Unidades</a></li>
+						<li><a href="#treino">Treino</a></li>
+						<li><a href="#parceiros">Parceiros</a></li>							
+						<li><a href="#patrocinios">Patrocinios</a></li>
+						<li><a href="#contato">Contato</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+	</section>
+	<!-- <section class="meio">	 -->
+
+	<section class="sobre js-scroll" id="sobre">
+		<div class="sobre-info">
+				<p>
+					O Athenas FC é um time de futebol feminino dedicado ao desenvolvimento e promoção do esporte entre mulheres. Fundado em [ANO DE FUNDAÇÃO], o clube tem como objetivo criar um ambiente inclusivo e inspirador para jogadoras talentosas.
+				</p>
+				<p>
+					Com um histórico de comprometimento e dedicação, nossas atletas representam não apenas a excelência esportiva, mas também a força e a determinação das mulheres no futebol.
+				</p>
+		</div>
+		<div class="sobre-img">
+			<img src="img/escudo.png" alt="Sobre 1">
+		</div>
+	</section>
+
+	<iframe width="100%" height="620" id="video" src="https://www.youtube.com/embed/1dUGMARRuQE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			
+	<section class="unidades js-scroll" id="unidades">
+		<div class="unidades-info">
+			<h1>Unidades</h1>
+			<p>
+				O Athenas FC conta com duas unidades para treinamento, localizadas em São Caetano do Sul e Santo André. Confira os horários de treino e venha fazer parte do nosso time!
+			</p>
+		</div>
+		<!-- </div> -->
+		<div class="unidades-container">
+			<div class="unidades-item scs">
+				<h2>São Caetano do Sul<br>Terças Feiras - 19h ás 22h</h2>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.136713282269!2d-46.680740284609655!3d-23.527584766231865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57fd1d715d45%3A0x864e5421d6195cb1!2sAllianz%20Parque!5e0!3m2!1spt-BR!2sbr!4v1653068977617!5m2!1spt-BR!2sbr" width="460" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe alt="unidades">
 				</div>
-			</section>
-			<section class="treino js-scroll" id="treino">
+			<div class="unidades-item sa">
+				<h2>Santo André<br> Quintas Feiras - 19h ás 22h</h2>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29248.946646981105!2d-46.75304918437498!3d-23.60008879999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce56c31b1fe649%3A0x7d134f4dfc6618c2!2sEst%C3%A1dio%20C%C3%ADcero%20Pompeu%20de%20Toledo!5e0!3m2!1spt-BR!2sbr!4v1653069702692!5m2!1spt-BR!2sbr" width="460" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe alt="unidades">
+			</div>
+		</div>
+	</section>
+			<!-- <section class="treino js-scroll" id="treino">
 				<div class="treino-info">
 					<h1>Treino</h1>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -89,94 +540,140 @@
 						</div>
 					</div>
 				</div>
-			</section>
-			<section class ="parceiros js-scroll" id="parceiros">
-				<div class="parceiros-info">
-					<h1>Parceiros</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<div class="parceiros-container">
-							<div class="parceiros-item">
-								<a href="https://www.google.com/search?q=studio%20cintia&oq=studio+cintia&aqs=chrome..69i57j46i175i199i512j46i131i433i512j0i512j46i175i199i512l2j0i512l2j46i175i199i512.2112j0j9&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:14&tbm=lcl&sxsrf=ALiCzsYRBzFvoCYLWljtmevxYOebmmZHTA:1653595003867&rflfq=1&num=10&rldimm=9633097486487547765&lqi=Cg1zdHVkaW8gY2ludGlhWg8iDXN0dWRpbyBjaW50aWGSAQpoYWlyX3NhbG9u&ved=2ahUKEwiUv7q2-f33AhWwuJUCHZg9AKUQvS56BAgHEAE&sa=X&rlst=f#rlfi=hd:;si:9633097486487547765,l,Cg1zdHVkaW8gY2ludGlhWg8iDXN0dWRpbyBjaW50aWGSAQpoYWlyX3NhbG9u;mv:[[-23.4361617,-46.263484],[-23.7250083,-46.927996799999995]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3,lf:1" target="blank">
-									<h2>Studio Cintia</h2>
-									<img src ="img/studio cintia.png	">
-								</a>
-							</div>
-							<div class="parceiros-item">
-								<a href="https://www.instagram.com/blueeyesfotografia/" target="_blank">
-									<h2>Blue Eyes Sports</h2>
-									<img src ="img/logo blue eyes 3.png">
-								</a>
-							</div>
-							<div class="parceiros-item">
-								<h2>Nubleh</h2>
-								<img src ="img/L ESCANTEIO ESCRITA.png">
-							</div>
-							<div class="parceiros-item">
-								<a href="https://www.facebook.com/inspireeviva/" target="blank">
-									<h2>Inspire</h2>
-									<img src ="img/inspire.png">
-								</a>
-							</div>
-						</div>
+			</section> -->
+	
+	<section class="treino js-scroll" id="treino">
+		<div class="treino-info">
+			<h1>Treinos</h1>
+				<p>
+					No Athenas FC, acreditamos que o sucesso em campo é resultado do comprometimento e do treinamento dedicado. Nossas sessões de treino são cuidadosamente planejadas para desenvolver habilidades técnicas, táticas e físicas, garantindo que cada jogadora alcance seu máximo potencial.
+				</p>
+				<p>
+					Nossos treinos são divididos em diferentes áreas, proporcionando uma abordagem abrangente para o aprimoramento das habilidades individuais e coletivas. Veja abaixo algumas das áreas em que nos concentramos:
+				</p>
+			<div class="treino-container">
+				<div class="treino-item fisico">
+					<h2>Treino Físico</h2>
+						<p>
+							Fortalecimento muscular, resistência e condicionamento para garantir que nossas atletas estejam sempre em ótima forma física.
+						</p>
+						<img src="./img/fisico.jpg" alt="Treino Físico">
 				</div>
-			</section>
-			<section class ="patrocinios js-scroll" id="patrocinios">
-				<div class="patrocinios-info">
-					<h1>Patrocinios</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<div class="parceiros-container">
-							<div class="parceiros-item">
-								<a href="http://villeprotecao.com.br/" target="_blank">
-									<h2>Ville</h2>
-									<img src ="img/ville.png">
-								</a>
-							</div>
-							<div class="parceiros-item">
-								<a href="https://www.facebook.com/oxisa/" target="_blank">
-									<h2>Oxissa</h2>
-									<img src ="img/Oxisa.png">
-								</a>
-							</div>
-							<div class="parceiros-item">
-								<a href="" target="blank">
-									<h2>Anuncie Aqui</h2>
-									<img src ="img/anuncio.png">
-								</a>
-							</div>
-							<div class="parceiros-item">
-								<a href="" target="blank">
-									<h2>Anuncie Aqui</h2>
-									<img src ="img/anuncio.png">
-								</a>
-							</div>
-						</div>
+				<div class="treino-item tatico">
+					<h2>Treino Tático</h2>
+						<p>
+							Desenvolvimento de estratégias de jogo, posicionamento tático e tomada de decisões em situações reais de partida.
+						</p>
+						<img src="./img/tatico.jpg" alt="Treino Tático">
 				</div>
-			</section>
-			<section class="contato js-scroll" id="contato">
-				<div class="contato-info">
-					<h1>Contato</h1>
-					<img class="contato-img" src="img/ATHENA.png">
+				<div class="treino-item amistosos">
+					<h2>Partidas Amistosas</h2>
+						<p>
+							Além dos treinos regulares, participamos de partidas amistosas para testar nossas habilidades em um ambiente competitivo.
+						</p>
+						<a href="https://www.youtube.com/watch?v=1dUGMARRuQE" target="_blank">
+							<img src="./img/amistoso.jpg" alt="Partidas Amistosas">
+						</a>
 				</div>
-				<div class="contato-info">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<div class="contato-redes">
-							<a href="https://www.instagram.com/_athenasfc_/" target="_blank">
-								<img src="img/insta.png" alt="contato 1">
-							</a>
-							<a href="https://api.whatsapp.com/send?phone=5511912899496" target="_blank">
-								<img src="img/whats.png" alt="contato 1">
-							</a>
-						</div>
+			</div>
+		</div>
+	</section>
+					
+	<section class ="parceiros js-scroll" id="parceiros">
+		<div class="parceiros-info">
+			<h1>Parceiros</h1>
+				<p>
+					O sucesso do Athenas FC é impulsionado pela colaboração com parceiros comprometidos com o desenvolvimento do esporte feminino. Agradecemos a essas empresas e organizações que apoiam nossa missão de promover a igualdade no futebol e inspirar a próxima geração de atletas.
+				</p>
+				<div class="parceiros-container">
+					<div class="parceiros-item">
+						<a href="https://www.google.com/search?q=studio%20cintia&oq=studio+cintia&aqs=chrome..69i57j46i175i199i512j46i131i433i512j0i512j46i175i199i512l2j0i512l2j46i175i199i512.2112j0j9&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:14&tbm=lcl&sxsrf=ALiCzsYRBzFvoCYLWljtmevxYOebmmZHTA:1653595003867&rflfq=1&num=10&rldimm=9633097486487547765&lqi=Cg1zdHVkaW8gY2ludGlhWg8iDXN0dWRpbyBjaW50aWGSAQpoYWlyX3NhbG9u&ved=2ahUKEwiUv7q2-f33AhWwuJUCHZg9AKUQvS56BAgHEAE&sa=X&rlst=f#rlfi=hd:;si:9633097486487547765,l,Cg1zdHVkaW8gY2ludGlhWg8iDXN0dWRpbyBjaW50aWGSAQpoYWlyX3NhbG9u;mv:[[-23.4361617,-46.263484],[-23.7250083,-46.927996799999995]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3,lf:1" target="blank">
+							<h2>Studio Cintia</h2>
+								<img src ="img/studio cintia.png	">
+						</a>
+					</div>
+					<div class="parceiros-item">
+						<a href="https://www.instagram.com/blueeyesfotografia/" target="_blank">
+							<h2>Blue Eyes Sports</h2>
+								<img src ="img/logo blue eyes 3.png">
+						</a>
+					</div>
+					<div class="parceiros-item">
+						<h2>Nubleh</h2>
+							<img src ="img/L ESCANTEIO ESCRITA.png">
+					</div>
+					<div class="parceiros-item">
+						<a href="https://www.facebook.com/inspireeviva/" target="blank">
+							<h2>Inspire</h2>
+							<img src ="img/inspire.png">
+						</a>
+					</div>
 				</div>
-			</section>
-		</section>
-		<section class="rodape">	
-			<footer class="footer">
-				<p>Athenas FC © Todos os direitos reservados.</p>
-			</footer>
-		</section>
-		<script src="./js/transicao.js"></script>
+		</div>
+	</section>
 
-	</body>
+	<section class ="patrocinios js-scroll" id="patrocinios">
+		<div class="patrocinios-info">
+			<h1>Patrocinios</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+			<div class="parceiros-container">
+				<div class="parceiros-item">
+					<a href="http://villeprotecao.com.br/" target="_blank">
+						<h2>Ville</h2>
+						<img src ="img/ville.png">
+					</a>
+				</div>
+				<div class="parceiros-item">
+					<a href="https://www.facebook.com/oxisa/" target="_blank">
+						<h2>Oxissa</h2>
+						<img src ="img/Oxisa.png">
+					</a>
+				</div>
+				<div class="parceiros-item">
+					<a href="" target="blank">
+						<h2>Anuncie Aqui</h2>
+							<img src ="img/anuncio.png">
+					</a>
+				</div>
+				<div class="parceiros-item">
+					<a href="" target="blank">
+						<h2>Anuncie Aqui</h2>
+							<img src ="img/anuncio.png">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contato js-scroll" id="contato">
+		<div class="contato-info">
+			<h1>Contato</h1>
+				<img class="contato-img" src="img/ATHENA.png">
+		</div>
+		<div class="contato-info">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+			<div class="contato-redes">
+				<a href="https://www.instagram.com/_athenasfc_/" target="_blank">
+					<img src="img/insta.png" alt="contato 1">
+				</a>
+				<a href="https://api.whatsapp.com/send?phone=5511912899496" target="_blank">
+					<img src="img/whats.png" alt="contato 1">
+				</a>
+			</div>
+		</div>
+	</section>
+		<!-- </section> -->
+	<section class="rodape">	
+		<footer class="footer">
+			<p>Athenas FC © Todos os direitos reservados.</p>
+		</footer>
+	</section>
+	
+	<script src="./js/transicao.js"></script>
+
+</body>
 </html>
-
